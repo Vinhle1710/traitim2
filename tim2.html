@@ -16,19 +16,11 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, .2);
-        }
+        } 
         body {
             overflow: hidden;
             padding: 0;
             margin: 0;
-            background: #000;
-        }
-        
-        canvas {
-            position: absolute;
-            width: 100%;
-            height: 100%;
         }
         
         canvas {
@@ -38,15 +30,7 @@
             position: absolute;
             transform: translate(-75%, -75%);
             animation: heart 1.2s ease infinite
-        }
-        canvas {
-
-            z-index: 1;
-            display: block;
-            position: absolute;
-            transform: translate(-75%, -75%);
-            animation: name 1.2s ease infinite
-        }
+        } 
         @keyframes name {
             0% {
                 transform: scale(1);
@@ -77,10 +61,11 @@
         }
     </style>
 </head>
-<body> 
-    <canvas id ="name"> <h1 style= "color:red ; display: block; text-align: center; ; font-family: 'Dancing Script', cursive;font-size: 30px;">Phương Ngô</h1></canvas>
-    <canvas id ="name" style= "color:red ; display: block; text-align: center; padding-top: -5px; font-family: 'Dancing Script', cursive;font-size: 20px;">_phuongng._</canvas>
-    <canvas id="heart"></canvas>
+<body>
+    <h1 id ="name" style= "color: green ;position:absolute;top:50%;left:50%;transform: translate(-50%,-50%); text-align: center; padding-top: 410px; font-family: 'Dancing Script', cursive;font-size: 30px;">Phương Ngô</h1>
+    <h2 id ="name" style= "color:#ea80b0 ; text-align: center; padding-top: -5px; font-family: 'Dancing Script', cursive;font-size: 20px;">_phuongng._</h2>
+    <canvas id="heart">
+    </canvas>
     <script>
         window.requestAnimationFrame =
             window.__requestAnimationFrame ||
@@ -109,8 +94,8 @@
             var width = canvas.width = koef * innerWidth;
             var height = canvas.height = koef * innerHeight;
             var rand = Math.random;
-            ctx.fillStyle = "rgba(0,0,0,1)";
-            ctx.fillRect(0, 0, width, height);
+            /*ctx.fillStyle = "hsl(333, 72%, 71%)";*/
+            /*ctx.fillRect(0, 0, width, height);*/
             var heartPosition = function (rad) {
                 return [Math.pow(Math.sin(rad), 3), -(15 * Math.cos(rad) - 5 * Math.cos(2 * rad) - 2 * Math.cos(3 * rad) - Math.cos(4 * rad))];
             };
@@ -120,8 +105,8 @@
             window.addEventListener('resize', function () {
                 width = canvas.width = koef * innerWidth;
                 height = canvas.height = koef * innerHeight;
-                ctx.fillStyle = "rgba(0,0,0,1)";
-                ctx.fillRect(0, 0, width, height);
+                /*ctx.fillStyle = "hsl(333, 72%, 71%)";
+                ctx.fillRect(0, 0, width, height);*/
             });
             var traceCount = mobile ? 20 : 50;
             var pointsOrigin = [];
@@ -151,7 +136,7 @@
                     q: ~~(rand() * heartPointsCount),
                     D: 2 * (i % 2) - 1,
                     force: 0.2 * rand() + 0.7,
-                    f: "hsla(0," + ~~(40 * rand() + 60) + "%," + ~~(60 * rand() + 20) + "%,.3)",
+                    f: "hsl(333, 72%, 71%)",
                     trace: []
                 };
                 for (var k = 0; k < traceCount; k++) e[i].trace[k] = { x: x, y: y };
@@ -165,8 +150,8 @@
                 var n = -Math.cos(time);
                 pulse((1 + n) * .5, (1 + n) * .5);
                 time += ((Math.sin(time)) < 0 ? 9 : (n > 0.8) ? .2 : 1) * config.timeDelta;
-                ctx.fillStyle = "rgba(0,0,0,.1)";
-                ctx.fillRect(0, 0, width, height);
+                /*ctx.fillStyle = "rgba(255, 255, 255, .4)";
+                ctx.fillRect(0, 0, width, height);*/
                 for (i = e.length; i--;) {
                     var u = e[i];
                     var q = targetPoints[u.q];
@@ -213,7 +198,5 @@
         if (s === 'complete' || s === 'loaded' || s === 'interactive') init();
         else document.addEventListener('DOMContentLoaded', init, false);
     </script>
-    <h1 id ="name" style= "color:#ea80b0 ; text-align: center; padding-top: 410px; font-family: 'Dancing Script', cursive;font-size: 30px;">Phương Ngô</h1>
-    <h2 id ="name" style= "color:#ea80b0 ; text-align: center; padding-top: -5px; font-family: 'Dancing Script', cursive;font-size: 20px;">_phuongng._</h2>
 </body>
 </html>
